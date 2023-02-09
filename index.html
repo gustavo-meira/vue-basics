@@ -50,8 +50,8 @@
       template: `
         <form @submit.prevent="handleSubmit">
           <h2>{{ title }}</h2>
-          <custom-input label="Email" />
-          <custom-input label="Password" />
+          <custom-input v-model="email" label="Email" />
+          <custom-input v-model="password" label="Password" />
           <button type="submit">Login</button>
         </form>
       `,
@@ -75,10 +75,20 @@
       template: `
         <label>
           {{ label }}
-          <input type="text" />
+          <input type="text" v-model="inputValue" />
         </label>
       `,
-      props: ['label'],
+      props: ['label', 'modelValue'],
+      computed: {
+        inputValue: {
+          get() {
+            return this.modelValue;
+          },
+          set(value) {
+            this.$emit('update:modelValue', value);
+          },
+        },
+      },
     });
 
     app.mount('#app');
