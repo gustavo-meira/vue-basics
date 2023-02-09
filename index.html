@@ -50,11 +50,12 @@
       template: `
         <form @submit.prevent="handleSubmit">
           <h2>{{ title }}</h2>
-          <input placeholder="email" type="email" v-model="email" />
-          <input placeholder="password" type="password" v-model="password" />
+          <custom-input label="Email" />
+          <custom-input label="Password" />
           <button type="submit">Login</button>
         </form>
       `,
+      components: ['custom-input'],
       data() {
         return {
           title: 'Login Form',
@@ -68,6 +69,16 @@
           console.log({ email, password });
         },
       }
+    });
+    
+    app.component('custom-input', {
+      template: `
+        <label>
+          {{ label }}
+          <input type="text" />
+        </label>
+      `,
+      props: ['label'],
     });
 
     app.mount('#app');
