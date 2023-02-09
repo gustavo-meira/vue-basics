@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Life Cycle Hooks</title>
+  <style>
+    .box {
+      height: 200px;
+      width: 200px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <div id="app"></div>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <script>
+    const app = Vue.createApp({
+      template: `
+        <input type="checkbox" v-model="isVisible" />
+        <custom-box v-if="isVisible" />
+      `,
+      data() {
+        return {
+          isVisible: true,
+        };
+      }
+    });
+
+    app.component('custom-box', {
+      template: `
+        <div class="box"></div>
+      `
+    });
+
+    app.mount('#app');
+  </script>
+</body>
+</html>
