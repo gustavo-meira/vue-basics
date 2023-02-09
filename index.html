@@ -2,10 +2,22 @@
 <html>
 <head>
   <title>Primeiro Programa com Vue</title>
+
+  <style>
+    .box {
+      background-color: blue;
+      height: 200px;
+      width: 200px;
+    }
+  </style>
 </head>
 <body>
   <div id="app">
     {{ greeting }}
+    <input v-model="greeting" />
+    <input type="checkbox" v-model="isVisible">
+
+    <div v-if="isVisible" class="box"></div>
   </div>
 
   <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
@@ -13,6 +25,7 @@
     const app = Vue.createApp({
       data: () => ({
         greeting: 'oi wolfi from vue',
+        isVisible: true,
       })
     })
     app.mount('#app')
