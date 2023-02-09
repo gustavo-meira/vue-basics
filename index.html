@@ -36,7 +36,12 @@
       data: () => ({
         greeting: 'oi wolfi from vue',
         isVisible: false,
-      })
+      }),
+      methods: {
+        toggleBox: () => {
+          this.isVisible = !this.isVisible;
+        },
+      },
     })
     app.mount('#app')
   </script>
